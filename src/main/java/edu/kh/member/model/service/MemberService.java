@@ -19,7 +19,7 @@ public class MemberService {
 		
 		close(conn);
 		
-		return null;
+		return loginMember;
 	}
 
 }

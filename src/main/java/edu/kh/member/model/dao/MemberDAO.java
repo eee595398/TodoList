@@ -26,7 +26,7 @@ public class MemberDAO {
 				prop = new Properties();
 				
 				String filePath 
-					= MemberDAO.class.getResource("/edu/kh/Todo/sql/member-sql.xml").getPath();
+					= MemberDAO.class.getResource("/edu/kh/todo/sql/member-sql.xml").getPath();
 				
 				prop.loadFromXML(new FileInputStream(filePath));
 				
@@ -54,6 +54,8 @@ public class MemberDAO {
 			rs = psmt.executeQuery();
 			
 			if(rs.next()) {
+				
+				loginMember = new Member();
 				
 				loginMember.setMemberNo(rs.getInt(1));
 				loginMember.setMemberId(rs.getString(2));

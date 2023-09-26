@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import edu.kh.member.model.dto.Member;
 import edu.kh.member.model.service.MemberService;
@@ -14,8 +15,9 @@ import edu.kh.member.model.service.MemberService;
 @WebServlet("/member/login")
 public class LoginController extends HttpServlet{
 	
+
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
 			try {
 				
@@ -24,7 +26,41 @@ public class LoginController extends HttpServlet{
 				
 				MemberService service = new MemberService();
 				
+		
+				
 				Member loginMember = service.login(inputId,inputPw);
+				
+				
+				
+				HttpSession session = req.getSession();
+				
+				
+				if(loginMember !=null) {
+					
+					
+					session.setAttribute("login", loginMember);
+					
+					System.out.println(loginMember);
+					
+					
+					session.setMaxInactiveInterval(60*60);
+					
+					resp.sendRedirect("/");
+					
+					
+				}else {
+					
+					session.setAttribute("message", "아이디또는 비밀번호가 일치하지 않습니다.");
+						
+					
+					
+					String referer = req.getHeader("referer");
+					
+					resp.sendRedirect(referer);
+					
+				}
+				
+				
 				
 				
 				

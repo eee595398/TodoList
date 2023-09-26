@@ -45,7 +45,7 @@ public class JDBCTemplate {
 				
 				
 				String filePath
-					= JDBCTemplate.class.getResource("/edu/kh/project/sql/driver.xml").getPath();
+					= JDBCTemplate.class.getResource("/edu/kh/todo/sql/driver.xml").getPath();
 				
 				// file:/C:/server_06/...
 				//  /C:/server_06/...
