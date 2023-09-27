@@ -9,6 +9,13 @@
 		AND MEMBER_DEL_FL = 'N'
 	</entry>
 	
+	<entry key="signUp">
+		INSERT INTO "MEMBER" 
+		(MEMBER_NO, MEMBER_ID, MEMBER_PW, MEMBER_NICKNAME) 
+		VALUES 
+  		((SELECT MAX(MEMBER_NO) + 1 FROM MEMBER), ?, ?, ?)
+	</entry>
+	
 	
 	
 </properties>

@@ -22,4 +22,17 @@ public class MemberService {
 		return loginMember;
 	}
 
+	public Member signup(String inputId, String inputPw, String inputNickname) throws Exception{
+		// TODO Auto-generated method stub
+		
+		Connection conn = getConnection();
+		
+		Member signupMember = dao.signup(conn, inputId, inputPw, inputNickname);
+		
+		close(conn);
+		
+		
+		return signupMember;
+	}
+
 }

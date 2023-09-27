@@ -35,7 +35,8 @@
         </fieldset>
     </form>
         <section id="signup">
-                <a href="/signup">회원가입</a>
+                <form action="/signup" method="post">
+                <button>회원가입</button></form>
             </section>
              
             
@@ -46,8 +47,12 @@
 				    <section>
 				        <section></section>
 				        <section>
-				            <button>등록하기</button>
-				            <button>로그아웃</button>
+					        <form action="/insert">
+					            <button>등록하기</button>
+				            </form>
+				            <form>
+					            <button>로그아웃</button>
+				            </form>
 				        </section>
 				    </section>
             

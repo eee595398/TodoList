@@ -78,4 +78,53 @@ public class MemberDAO {
 		return loginMember;
 	}
 
+
+	public Member signup(Connection conn, String inputId, String inputPw, String inputNickname) throws Exception {
+		// TODO Auto-generated method stub
+		
+		Member signupMember = null;
+		
+		try {
+			
+			String sql = prop.getProperty("signUp");
+			
+			psmt = conn.prepareStatement(sql);
+			
+			psmt.setString(1,inputId);
+			
+			psmt.setString(2, inputPw);
+			
+			psmt.setString(3, inputNickname);
+			
+			
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				
+				signupMember = new Member();
+				
+				signupMember.setMemberNo(rs.getInt(1));
+				signupMember.setMemberId(rs.getString(2));
+				signupMember.setMemberPw(rs.getString(3));
+				signupMember.setMemberNickname(rs.getString(4));
+
+
+				
+			}
+			
+		
+			
+		}finally {
+			
+			close(psmt);
+			close(rs);
+		}
+		
+		
+		
+		
+		
+		return signupMember;
+	}
+
 }
